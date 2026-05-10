@@ -77,12 +77,7 @@
                     <h1>Rent <span id="typewriter-word" class="typewriter-word">anything.</span><br>Smoothly.</h1>
                     <p>Skip the clutter. Access high-quality gear, tools, and experiences directly from your neighbors with zero friction.</p>
 
-                    <!-- Search bar (Feature 5) -->
-                    <div class="hero-search-bar">
-                        <input id="hero-search" type="text"
-                               placeholder='Try "camera", "bike", "tent"…' autocomplete="off" />
-                        <button id="hero-search-btn">Search</button>
-                    </div>
+
 
                     <div class="hero-btns">
                         <a href="explore.php" class="btn btn-primary">Browse Items</a>

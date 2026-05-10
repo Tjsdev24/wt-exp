@@ -177,7 +177,6 @@ if ($db) {
         <div class="panel">
           <div class="panel-header">
             <h2>Listings Overview</h2>
-            <a href="#">View all</a>
           </div>
 
           <div class="filter-group">
@@ -208,7 +207,6 @@ if ($db) {
         <div class="panel">
           <div class="panel-header">
             <h2>Recent Reports</h2>
-            <a href="#">View all</a>
           </div>
 
           <?php if (!empty($reports)): ?>

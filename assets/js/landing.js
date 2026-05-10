@@ -90,43 +90,7 @@ $(function () {
   });
 
 
-  /* ─────────────────────────────────────────────
-     5. HERO SEARCH BAR — highlights matching category
-  ───────────────────────────────────────────── */
-  const categoryMap = {
-    camera: 'electronics', photo: 'electronics', lens: 'electronics', drone: 'electronics',
-    bike: 'mobility', scooter: 'mobility', cycle: 'mobility', ride: 'mobility',
-    drill: 'tools', saw: 'tools', hammer: 'tools', wrench: 'tools',
-    tent: 'outdoors', kayak: 'outdoors', camp: 'outdoors', hike: 'outdoors',
-  };
 
-  $('#hero-search').on('input', function () {
-    const val = $(this).val().toLowerCase().trim();
-    $('.cat-card').removeClass('cat-highlighted');
-
-    if (!val) return;
-
-    let matched = null;
-    Object.entries(categoryMap).forEach(([keyword, cat]) => {
-      if (val.includes(keyword)) matched = cat;
-    });
-
-    if (matched) {
-      $(`.cat-card[data-category="${matched}"]`).addClass('cat-highlighted');
-    }
-  });
-
-  $('#hero-search-btn').on('click', function () {
-    const val = $('#hero-search').val().trim();
-    if (!val) return;
-    showToast(`🔍 Searching for "${val}"…`, 'info');
-    // In a real app: window.location = `explore.html?q=${encodeURIComponent(val)}`;
-  });
-
-  // Also trigger on Enter
-  $('#hero-search').on('keydown', function (e) {
-    if (e.key === 'Enter') $('#hero-search-btn').trigger('click');
-  });
 
 
   /* Theme handled by theme.js */
@@ -236,26 +200,6 @@ $(function () {
   });
 
 
-  /* ─────────────────────────────────────────────
-     12. CATEGORY ACTIVE STATE — hash routing feel
-  ───────────────────────────────────────────── */
-  // Highlight cat card whose data-category matches URL hash
-  function syncCategoryHash() {
-    const hash = window.location.hash.replace('#', '');
-    $('.cat-card').removeClass('cat-active');
-    if (hash) $(`.cat-card[data-category="${hash}"]`).addClass('cat-active');
-  }
-  syncCategoryHash();
 
-  $(window).on('hashchange', syncCategoryHash);
-
-  $('.cat-card').on('click', function (e) {
-    e.preventDefault();
-    const cat = $(this).data('category');
-    history.pushState(null, '', `#${cat}`);
-    $('.cat-card').removeClass('cat-active');
-    $(this).addClass('cat-active');
-    showToast(`Browsing ${$(this).find('h3').text()}…`, 'info', 2000);
-  });
 
 });
