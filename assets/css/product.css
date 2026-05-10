@@ -1,0 +1,250 @@
+/* product.css */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 0 5% 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: start;
+}
+
+/* Crucial fix for sticky inside grid */
+.gallery {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}
+.main-img {
+  width: 100%;
+  border-radius: var(--radius-card);
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-card);
+  margin-top: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.breadcrumb:hover {
+  color: var(--primary);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.title-area h1 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  margin-bottom: 0.8rem;
+}
+.rating {
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.owner-pill {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem;
+  background: var(--bg-surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  width: fit-content;
+  padding-right: 1.5rem;
+  border: 1px solid var(--border-light);
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: #e0e7ff;
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.owner-text {
+  display: flex;
+  flex-direction: column;
+}
+.owner-text strong {
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+.owner-text span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.description {
+  color: var(--text-main);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  background: var(--bg-surface);
+  padding: 2rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.floating-widget {
+  background: var(--bg-surface);
+  padding: 2.5rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-float);
+  border: 1px solid var(--border-light);
+}
+.price {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.price h2 {
+  font-size: 2rem;
+  color: #0f172a;
+  line-height: 1;
+  font-weight: 900;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.currency-symbol {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+.price > span {
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.date-pickers {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.date-pickers .form-control {
+  flex: 1;
+  min-width: 140px;
+}
+
+@media (max-width: 900px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .gallery {
+    position: static;
+  }
+}
+
+/* =========================================
+   NEW CSS FOR PRODUCT FEATURES
+   ========================================= */
+
+/* Feature 2: Thumbnails */
+.thumbnails {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.thumb-img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.thumb-img:hover {
+  opacity: 1;
+}
+
+.thumb-img.active {
+  opacity: 1;
+  border-color: var(--primary, #2563eb);
+}
+
+/* Feature 1: Total Price Breakdown */
+.total-breakdown {
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 1rem 0;
+}
+
+.total-row {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Feature 4: Toast System */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  display: none;
+  transform: translateY(20px);
+  animation: slideUpToast 0.3s forwards;
+}
+
+.toast.error {
+  background-color: #ef4444;
+}
+
+.toast.success {
+  background-color: #10b981;
+}
+
+@keyframes slideUpToast {
+  to { transform: translateY(0); }
+}

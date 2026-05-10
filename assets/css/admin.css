@@ -1,0 +1,299 @@
+.page-header {
+  padding: 0 5% 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.page-header h1 {
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  margin: 0.8rem 0 0.8rem;
+}
+
+.page-header p {
+  color: var(--text-muted);
+  max-width: 620px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stats-grid {
+  padding: 0 5% 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card,
+.panel,
+.report-card,
+.booking-card,
+.listing-item,
+.calendar-box {
+  background: var(--bg-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-card {
+  padding: 1.5rem;
+}
+
+.stat-card span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat-card strong {
+  font-size: 2rem;
+}
+
+.admin-layout,
+.provider-layout {
+  padding: 0 5% 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+}
+
+.provider-layout {
+  grid-template-columns: 1fr 1fr 0.9fr;
+}
+
+.panel {
+  padding: 1.5rem;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.panel-header h2 {
+  font-size: 1.15rem;
+}
+
+.panel-header a {
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.table-list,
+.report-card,
+.booking-card,
+.listing-item {
+  margin-top: 1rem;
+}
+
+.table-row,
+.booking-card,
+.listing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table-row:last-child,
+.booking-card:last-child,
+.listing-item:last-child {
+  border-bottom: none;
+}
+
+.table-row h4,
+.report-card h4,
+.booking-card h4,
+.listing-item h4 {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.table-row p,
+.report-card p,
+.booking-card p,
+.listing-item p,
+.calendar-box p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.report-card {
+  padding: 1rem;
+  margin-top: 1rem;
+  position: relative; /* Added for close button positioning */
+}
+
+.status-pill {
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pill.warning {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-pill.success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.calendar-box {
+  padding: 1.5rem;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .page-header,
+  .admin-layout,
+  .provider-layout {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .page-header {
+    display: block;
+  }
+
+  .header-actions {
+    margin-top: 1.5rem;
+  }
+}
+
+/* =========================================
+   NEW CSS FOR ADDED INTERACTIVE FEATURES
+   ========================================= */
+
+/* Feature 2: Filter Group Styles */
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+
+.filter-btn:hover {
+  background: #f3f4f6;
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Feature 3: Dismiss Report Button Styles */
+.dismiss-report {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.dismiss-report:hover {
+  color: #ef4444; /* Red on hover */
+}
+
+/* Feature 4: Toast Notification Styles */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-size: 0.9rem;
+  display: none; /* Hidden by default, shown by jQuery */
+  transform: translateY(20px);
+  animation: slideUpToast 0.3s forwards;
+}
+
+@keyframes slideUpToast {
+  to {
+    transform: translateY(0);
+  }
+}
+/* Improved Aesthetics */
+.stat-card { transition: all 0.3s ease; border: 1px solid var(--border-light); }
+.stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--primary); }
+.table-row { border-bottom: 1px solid var(--border-light); padding: 15px; }
+.panel { overflow: hidden; }
+
+/* Admin Dashboard New Features */
+.row-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.user-meta h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.user-meta p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+

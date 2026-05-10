@@ -1,0 +1,333 @@
+/* ============================================================
+   landing-features.css
+   Styles for all JS-powered features (drop alongside landing.css)
+   ============================================================ */
+
+/* ── 1. STICKY NAVBAR ─────────────────────────────────────── */
+.navbar {
+  transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.nav-scrolled {
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(10px);
+}
+[data-theme="dark"] .nav-scrolled {
+  background: rgba(15,15,20,0.97);
+}
+
+
+/* ── 2. TYPEWRITER ───────────────────────────────────────── */
+.typewriter-word {
+  color: var(--primary, #4f46e5);
+  border-right: 3px solid var(--primary, #4f46e5);
+  padding-right: 4px;
+  animation: blink-caret 0.75s step-end infinite;
+}
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+
+/* ── 3. SCROLL REVEAL ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger children inside a container that is itself a reveal */
+.category-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.category-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+.category-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+
+/* ── 4. RIPPLE ───────────────────────────────────────────── */
+.cat-card {
+  position: relative;
+  overflow: hidden;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(79,70,229,0.25);
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple-out 0.6s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes ripple-out {
+  to { transform: translate(-50%,-50%) scale(30); opacity: 0; }
+}
+
+
+/* ── 5. SEARCH BAR ───────────────────────────────────────── */
+.hero-search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 50px;
+  overflow: hidden;
+  max-width: 480px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hero-search-bar:focus-within {
+  border-color: var(--primary, #4f46e5);
+  box-shadow: 0 4px 24px rgba(79,70,229,0.15);
+}
+#hero-search {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  background: transparent;
+  color: inherit;
+}
+#hero-search-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary, #4f46e5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0 50px 50px 0;
+  transition: background 0.2s;
+}
+#hero-search-btn:hover { background: #4338ca; }
+
+.cat-highlighted {
+  border: 2px solid var(--primary, #4f46e5) !important;
+  box-shadow: 0 0 0 4px rgba(79,70,229,0.12) !important;
+  transform: translateY(-6px) scale(1.02);
+}
+.cat-active {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border: 2px solid var(--primary, #4f46e5);
+}
+
+
+/* ── 6. DARK MODE ────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-main: #0f0f14;
+  --bg-surface: #1a1a24;
+  --text-main: #f0f0f5;
+  --text-muted: #9090a8;
+  color-scheme: dark;
+}
+[data-theme="dark"] body {
+  background: var(--bg-main, #0f0f14);
+  color: var(--text-main, #f0f0f5);
+}
+[data-theme="dark"] .hero-search-bar {
+  background: #1a1a24;
+  border-color: #2e2e40;
+}
+[data-theme="dark"] #hero-search { color: #f0f0f5; }
+[data-theme="dark"] .cat-card {
+  background: #1a1a24;
+  color: #f0f0f5;
+}
+[data-theme="dark"] .soft-badge {
+  background: #1a1a24;
+  color: var(--primary, #818cf8);
+}
+
+.theme-btn {
+  background: none;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.theme-btn:hover { border-color: var(--primary, #4f46e5); transform: rotate(20deg); }
+[data-theme="dark"] .theme-btn { border-color: #2e2e40; }
+
+
+/* ── 7. BACK TO TOP ──────────────────────────────────────── */
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary, #4f46e5);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(79,70,229,0.35);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#back-to-top.btt-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+#back-to-top:hover { background: #4338ca; }
+
+
+/* ── 8. STATS SECTION ────────────────────────────────────── */
+.stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: var(--primary, #4f46e5);
+  padding: 3rem 5%;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.stat-item {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  color: #fff;
+  padding: 1rem;
+  position: relative;
+}
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+}
+.stat-number {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* ── 9. TOAST ────────────────────────────────────────────── */
+#toast-container {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+.toast {
+  background: #1e1e2e;
+  color: #f0f0f5;
+  padding: 0.85rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  max-width: 320px;
+  pointer-events: auto;
+}
+.toast.toast-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.toast-info { border-left: 4px solid var(--primary, #4f46e5); }
+.toast-success { border-left: 4px solid #22c55e; }
+.toast-error { border-left: 4px solid #ef4444; }
+
+
+/* ── 11. HAMBURGER / MOBILE MENU ─────────────────────────── */
+#hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+#hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#hamburger.open span:nth-child(2) { opacity: 0; }
+#hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.hamburger-area {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 998;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-theme="dark"] #mobile-menu {
+  background: rgba(15,15,20,0.98);
+}
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+#mobile-menu a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+body.no-scroll { overflow: hidden; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .hamburger-area { display: flex !important; }
+  .stats-section { gap: 1rem; }
+  .stat-item:not(:last-child)::after { display: none; }
+  .hero-search-bar { max-width: 100%; }
+}
