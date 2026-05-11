@@ -235,7 +235,6 @@ if ($db) {
           <p>Monitor bookings, earnings, availability, and customer requests.</p>
         </div>
         <div class="header-actions">
-          <a href="#" class="btn btn-secondary">Edit Profile</a>
           <a href="#" class="btn btn-primary" id="add-item-btn">Add New Item</a>
         </div>
       </section>
@@ -263,7 +262,6 @@ if ($db) {
         <div class="panel">
           <div class="panel-header">
             <h2>Rental Requests & Bookings</h2>
-            <a href="#">See all</a>
           </div>
 
           <?php if (!empty($rentals)): ?>
@@ -302,7 +300,6 @@ if ($db) {
         <div class="panel">
           <div class="panel-header">
             <h2>Your Listings</h2>
-            <a href="#">Manage</a>
           </div>
 
           <?php if (!empty($listings)): ?>
@@ -333,7 +330,6 @@ if ($db) {
         <div class="panel">
           <div class="panel-header">
             <h2>Availability</h2>
-            <a href="#">Update</a>
           </div>
           <div class="calendar-box interactive-calendar">
             <p class="cal-instructions">Click a day to block/unblock rentals.</p>
